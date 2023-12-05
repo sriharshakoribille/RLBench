@@ -40,7 +40,8 @@ flags.DEFINE_integer('variations', -1,
                      'Number of variations to collect per task. -1 for all.')
 flags.DEFINE_bool('all_variations', True,
                   'Include all variations when sampling epsiodes')
-
+flags.DEFINE_bool('headless', True,
+                  'Include all variations when sampling epsiodes')
 
 def check_and_make(dir):
     if not os.path.exists(dir):
@@ -213,7 +214,7 @@ def run(i, lock, task_index, variation_count, results, file_lock, tasks):
     rlbench_env = Environment(
         action_mode=MoveArmThenGripper(JointVelocity(), Discrete()),
         obs_config=obs_config,
-        headless=True)
+        headless=FLAGS.headless)
     rlbench_env.launch()
 
     task_env = None
@@ -340,7 +341,7 @@ def run_all_variations(i, lock, task_index, variation_count, results, file_lock,
     rlbench_env = Environment(
         action_mode=MoveArmThenGripper(JointVelocity(), Discrete()),
         obs_config=obs_config,
-        headless=True)
+        headless=FLAGS.headless)
     rlbench_env.launch()
 
     task_env = None

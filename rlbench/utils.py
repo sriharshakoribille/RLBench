@@ -116,12 +116,26 @@ def get_stored_demos(amount: int, image_paths: bool, dataset_root: str,
 
         num_steps = len(obs)
 
+        # print('num_steps: ', num_steps)
+        # print('len(l_sh_rgb_f): ', len(listdir(l_sh_rgb_f)))
+        # print('len(l_sh_depth_f): ', len(listdir(l_sh_depth_f)))
+        # print('len(r_sh_rgb_f): ', len(listdir(r_sh_rgb_f)))
+        # print('len(r_sh_depth_f): ', len(listdir(r_sh_depth_f)))
+        # print('len(oh_rgb_f): ', len(listdir(oh_rgb_f)))
+        # print('len(oh_depth_f): ', len(listdir(oh_depth_f)))
+        # print('len(wrist_rgb_f): ', len(listdir(wrist_rgb_f)))
+        # print('len(wrist_depth_f): ', len(listdir(wrist_depth_f)))
+        # print('len(front_rgb_f): ', len(listdir(front_rgb_f)))
+        # print('len(front_depth_f): ', len(listdir(front_depth_f)))
+
         if not (num_steps == len(listdir(l_sh_rgb_f)) == len(
                 listdir(l_sh_depth_f)) == len(listdir(r_sh_rgb_f)) == len(
                 listdir(r_sh_depth_f)) == len(listdir(oh_rgb_f)) == len(
                 listdir(oh_depth_f)) == len(listdir(wrist_rgb_f)) == len(
                 listdir(wrist_depth_f)) == len(listdir(front_rgb_f)) == len(
                 listdir(front_depth_f))):
+            
+            
             raise RuntimeError('Broken dataset assumption')
 
         for i in range(num_steps):

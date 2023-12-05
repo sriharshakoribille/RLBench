@@ -12,6 +12,7 @@ from rlbench.backend.robot import Robot
 import numpy as np
 import os
 import argparse
+from distutils.util import strtobool
 
 DEMO_ATTEMPTS = 5
 MAX_VARIATIONS = 100
@@ -116,7 +117,9 @@ def task_smoke(task: Task, scene: Scene, variation=-1, demos=4, success=0.50,
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("task", help="The task file to test.")
+    parser.add_argument("--headless", default=True, type=strtobool)
     args = parser.parse_args()
+    print(args.headless)
 
     python_file = os.path.join(TASKS_PATH, args.task)
     if not os.path.isfile(python_file):
@@ -128,7 +131,8 @@ if __name__ == '__main__':
     sim = PyRep()
     ttt_file = os.path.join(
         DIR_PATH, '..', 'rlbench', TTT_FILE)
-    sim.launch(ttt_file, headless=True)
+    # sim.launch(ttt_file, headless=True)
+    sim.launch(ttt_file, headless=args.headless)
     sim.step_ui()
     sim.set_simulation_timestep(0.005)
     sim.step_ui()
