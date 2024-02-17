@@ -81,7 +81,7 @@ class AOcr(Task):
         #         % (self.blocks_to_stack, color_name)]
 
 
-        return ['Place the %s block on the good platform']
+        return ['Place the %s block on the good platform' % color_name]
         # return ['Place the red block']
 
     def variation_count(self) -> int:
