@@ -81,7 +81,7 @@ class AMix(Task):
         #         % (self.blocks_to_stack, color_name)]
 
 
-        return ['Place the green block on the good platform']
+        return ['Place the green sphere on the good platform']
         # return ['Place the red block']
 
     def variation_count(self) -> int:
